@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/mr-01-flow-sample/mr-01-flow-sample.iml" filepath="$PROJECT_DIR$/mr-01-flow-sample/mr-01-flow-sample.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mr-sample.iml" filepath="$PROJECT_DIR$/mr-sample.iml" />
+    </modules>
+  </component>
+</project>
