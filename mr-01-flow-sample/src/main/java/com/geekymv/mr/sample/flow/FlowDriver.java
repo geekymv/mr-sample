@@ -11,7 +11,7 @@ import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
 /**
  * Created by geekymv on 2018/3/31.
  * 需求
- * 1.
+ * 1.统计每一个用户（手机号）所耗费的总上行流浪、总下行流量、总流量
  */
 public class FlowDriver {
 
