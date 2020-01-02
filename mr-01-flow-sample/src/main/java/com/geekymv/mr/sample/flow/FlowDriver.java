@@ -31,6 +31,7 @@ public class FlowDriver {
         FileInputFormat.addInputPath(job, new Path("/usr/root/flow/input/flow.data"));
         FileOutputFormat.setOutputPath(job, new Path("/usr/root/flow/output"));
 
-        job.waitForCompletion(true);
+        boolean result = job.waitForCompletion(true);
+        System.exit(result ? 0 : 1);
     }
 }

@@ -39,6 +39,7 @@ public class FlowDriver {
 
         FileOutputFormat.setOutputPath(job, out);
 
-        job.waitForCompletion(true);
+        boolean result = job.waitForCompletion(true);
+        System.exit(result ? 0 : 1);
     }
 }
