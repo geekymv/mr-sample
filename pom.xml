@@ -10,6 +10,7 @@
       <module>mr-02-flowsort-sample</module>
       <module>mr-00-wordcount-sample</module>
     <module>mr-03-inputformat-sample</module>
+    <module>mr-04-partition-sample</module>
   </modules>
   <packaging>pom</packaging>
 
