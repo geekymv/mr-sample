@@ -66,7 +66,7 @@ public class FlowBean implements WritableComparable<FlowBean> {
      */
     @Override
     public int compareTo(FlowBean o) {
-        return this.sumFlow > o.sumFlow ? -1 : 1;
+        return Long.compare(o.getSumFlow(), this.getSumFlow());
     }
 
 

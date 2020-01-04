@@ -12,7 +12,7 @@ import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
 /**
  * Created by geekymv on 2018/3/31.
  * 需求
- * 1.
+ * 将mr-01-flow-sample 的执行结果根据总流量倒序排序
  */
 public class FlowDriver {
 
@@ -29,10 +29,10 @@ public class FlowDriver {
         job.setOutputKeyClass(Text.class);
         job.setOutputValueClass(Text.class);
 
-        FileInputFormat.addInputPath(job, new Path("/usr/root/flow/input/flow.data"));
+        FileInputFormat.addInputPath(job, new Path(args[0]));
 
         FileSystem fs = FileSystem.get(conf);
-        Path out = new Path("/usr/root/flow/output");
+        Path out = new Path(args[1]);
         if(fs.exists(out)) {
             fs.delete(out, true);
         }
