@@ -11,6 +11,8 @@
       <module>mr-00-wordcount-sample</module>
     <module>mr-03-inputformat-sample</module>
     <module>mr-04-partition-sample</module>
+      <module>mr-05-combiner-sample</module>
+    <module>mr-06-groupingcomparator-sample</module>
   </modules>
   <packaging>pom</packaging>
 
