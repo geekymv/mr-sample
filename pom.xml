@@ -9,6 +9,7 @@
     <module>mr-01-flow-sample</module>
       <module>mr-02-flowsort-sample</module>
       <module>mr-00-wordcount-sample</module>
+    <module>mr-03-inputformat-sample</module>
   </modules>
   <packaging>pom</packaging>
 
