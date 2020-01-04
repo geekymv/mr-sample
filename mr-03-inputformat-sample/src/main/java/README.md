@@ -9,4 +9,4 @@ one.txt two.txt three.txt
 part-r-0000
 
 
-InputFormat -> Mapper -> Shuffle -> Reducer ->OutputFormat
+Input -> InputFormat -> Mapper -> Shuffle -> Reducer -> OutputFormat -> Output
