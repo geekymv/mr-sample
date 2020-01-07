@@ -14,6 +14,7 @@
       <module>mr-05-combiner-sample</module>
     <module>mr-06-groupingcomparator-sample</module>
       <module>mr-07-outputformat-sample</module>
+      <module>mr-08-reducejoin-sample</module>
   </modules>
   <packaging>pom</packaging>
 
