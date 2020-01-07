@@ -48,9 +48,19 @@ public class OrderBean implements WritableComparable<OrderBean> {
         this.price = price;
     }
 
+    /**
+     * 先根据productId排序，在根据productName 倒序排序
+     * 这样product信息会在reduce端第一个位置
+     * @param o
+     * @return
+     */
     @Override
     public int compareTo(OrderBean o) {
-        return this.getOrderId().compareTo(o.getOrderId());
+        int compare = this.productId.compareTo(o.getProductId());
+        if(compare == 0) {
+            return o.getProductName().compareTo(this.productName);
+        }
+        return compare;
     }
 
     @Override
@@ -67,5 +77,10 @@ public class OrderBean implements WritableComparable<OrderBean> {
         this.productId = in.readUTF();
         this.productName = in.readUTF();
         this.price = in.readDouble();
+    }
+
+    @Override
+    public String toString() {
+        return orderId + "\t" + productName + "\t" + price;
     }
 }
