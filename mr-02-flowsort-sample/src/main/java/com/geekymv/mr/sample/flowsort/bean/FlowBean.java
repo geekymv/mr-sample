@@ -9,7 +9,7 @@ import java.io.IOException;
 /**
  * Created by geekymv on 2018/3/31.
  * 排序 Comparable
- * MapReduct 默认根据key 排序
+ * MapReduce 默认根据key 排序
  *
  */
 public class FlowBean implements WritableComparable<FlowBean> {
