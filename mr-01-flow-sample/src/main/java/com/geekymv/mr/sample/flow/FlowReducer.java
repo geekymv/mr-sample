@@ -22,6 +22,6 @@ public class FlowReducer extends Reducer<Text, FlowBean, Text, Text> {
             sumDownFlow += flowBean.getDownFlow();
         }
 
-        context.write(key, new Text(sumUpFlow + " " + sumDownFlow + " " + (sumUpFlow + sumDownFlow)));
+        context.write(key, new Text(sumUpFlow + "\t" + sumDownFlow + "\t" + (sumUpFlow + sumDownFlow)));
     }
 }

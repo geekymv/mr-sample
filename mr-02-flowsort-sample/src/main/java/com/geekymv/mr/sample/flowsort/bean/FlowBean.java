@@ -8,8 +8,14 @@ import java.io.IOException;
 
 /**
  * Created by geekymv on 2018/3/31.
+ * 排序 Comparable
+ * MapReduct 默认根据key 排序
+ *
  */
 public class FlowBean implements WritableComparable<FlowBean> {
+
+    private String phone;
+
     /**
      * 上行流量
      */
@@ -25,11 +31,16 @@ public class FlowBean implements WritableComparable<FlowBean> {
      */
     private long sumFlow;
 
+    @Override
+    public String toString() {
+        return phone + "\t" + upFlow + "\t" + downFlow + "\t" + sumFlow;
+    }
 
     public FlowBean() {
     }
 
-    public FlowBean(long upFlow, long downFlow) {
+    public FlowBean(String phone, long upFlow, long downFlow) {
+        this.phone = phone;
         this.upFlow = upFlow;
         this.downFlow = downFlow;
         this.sumFlow = upFlow + downFlow;
@@ -42,6 +53,7 @@ public class FlowBean implements WritableComparable<FlowBean> {
      */
     @Override
     public void write(DataOutput out) throws IOException {
+        out.writeUTF(phone);
         out.writeLong(upFlow);
         out.writeLong(downFlow);
         out.writeLong(sumFlow);
@@ -54,6 +66,7 @@ public class FlowBean implements WritableComparable<FlowBean> {
      */
     @Override
     public void readFields(DataInput in) throws IOException {
+        this.phone = in.readUTF();
         this.upFlow = in.readLong();
         this.downFlow = in.readLong();
         this.sumFlow = in.readLong();
@@ -66,10 +79,21 @@ public class FlowBean implements WritableComparable<FlowBean> {
      */
     @Override
     public int compareTo(FlowBean o) {
-        return Long.compare(o.getSumFlow(), this.getSumFlow());
+        int compare = Long.compare(o.getSumFlow(), this.getSumFlow());
+        if(compare == 0) {
+            return this.phone.compareTo(o.getPhone());
+        }
+        return compare;
     }
 
 
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
 
     public long getUpFlow() {
         return upFlow;

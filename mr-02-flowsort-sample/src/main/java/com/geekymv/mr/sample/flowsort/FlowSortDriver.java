@@ -4,7 +4,7 @@ import com.geekymv.mr.sample.flowsort.bean.FlowBean;
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.FileSystem;
 import org.apache.hadoop.fs.Path;
-import org.apache.hadoop.io.Text;
+import org.apache.hadoop.io.NullWritable;
 import org.apache.hadoop.mapreduce.Job;
 import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;
 import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
@@ -14,20 +14,20 @@ import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
  * 需求
  * 将mr-01-flow-sample 的执行结果根据总流量倒序排序
  */
-public class FlowDriver {
+public class FlowSortDriver {
 
     public static void main(String[] args) throws Exception {
         Configuration conf = new Configuration();
         Job job = Job.getInstance(conf, "FlowDriver");
 
-        job.setJarByClass(FlowDriver.class);
+        job.setJarByClass(FlowSortDriver.class);
         job.setMapperClass(FlowMapper.class);
         job.setReducerClass(FlowReducer.class);
 
         job.setMapOutputKeyClass(FlowBean.class);
-        job.setMapOutputValueClass(Text.class);
-        job.setOutputKeyClass(Text.class);
-        job.setOutputValueClass(Text.class);
+        job.setMapOutputValueClass(NullWritable.class);
+        job.setOutputKeyClass(FlowBean.class);
+        job.setOutputValueClass(NullWritable.class);
 
         FileInputFormat.addInputPath(job, new Path(args[0]));
 
