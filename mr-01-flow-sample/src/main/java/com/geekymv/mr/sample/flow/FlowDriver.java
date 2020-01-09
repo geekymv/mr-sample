@@ -2,6 +2,7 @@ package com.geekymv.mr.sample.flow;
 
 import com.geekymv.mr.sample.flow.bean.FlowBean;
 import org.apache.hadoop.conf.Configuration;
+import org.apache.hadoop.fs.FileSystem;
 import org.apache.hadoop.fs.Path;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Job;
@@ -11,7 +12,7 @@ import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
 /**
  * Created by geekymv on 2018/3/31.
  * 需求
- * 1.统计每一个用户（手机号）所耗费的总上行流浪、总下行流量、总流量
+ * 1.统计每一个用户（手机号）所耗费的总上行流量、总下行流量、总流量
  */
 public class FlowDriver {
 
@@ -28,8 +29,14 @@ public class FlowDriver {
         job.setOutputKeyClass(Text.class);
         job.setOutputValueClass(Text.class);
 
-        FileInputFormat.addInputPath(job, new Path("/usr/root/flow/input/flow.data"));
-        FileOutputFormat.setOutputPath(job, new Path("/usr/root/flow/output"));
+        FileInputFormat.addInputPath(job, new Path(args[0]));
+
+        Path outPath = new Path(args[1]);
+        FileSystem fs = FileSystem.get(conf);
+        if(fs.exists(outPath)) {
+            fs.delete(outPath,true);
+        }
+        FileOutputFormat.setOutputPath(job, outPath);
 
         boolean result = job.waitForCompletion(true);
         System.exit(result ? 0 : 1);
