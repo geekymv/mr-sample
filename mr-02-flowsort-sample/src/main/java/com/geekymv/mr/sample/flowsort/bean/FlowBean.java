@@ -63,6 +63,7 @@ public class FlowBean implements WritableComparable<FlowBean> {
 
     /**
      * 根据总流量倒序
+     * 分组与排序相关，总流量相同的数据会进入同一个reduce方法
      * @param o
      * @return
      */
