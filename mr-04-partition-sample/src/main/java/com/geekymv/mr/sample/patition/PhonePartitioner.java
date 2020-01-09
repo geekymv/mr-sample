@@ -5,6 +5,7 @@ import org.apache.hadoop.mapreduce.Partitioner;
 
 /**
  * Partition 分区决定数据去往哪个ReduceTask
+ * 默认实现是 HashPartitioner
  * Partitioner 泛型与Mapper输出类型一致
  */
 public class PhonePartitioner extends Partitioner<Text, FlowBean> {
